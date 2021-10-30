@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/api/API.iml" filepath="$PROJECT_DIR$/api/API.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SockShopAutoTestProject.iml" filepath="$PROJECT_DIR$/.idea/SockShopAutoTestProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" />
     </modules>
   </component>
 </project>
