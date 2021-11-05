@@ -1,24 +1,29 @@
 package registerTests;
 
+import baseTest.BaseTest;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import lombok.Getter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeAll;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import payload.UserPayload;
+import service.UserApiService;
+
+import static conditions.Conditions.bodyField;
+import static conditions.Conditions.statusCode;
+import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class RegisterTests {
 
-    @BeforeClass
-    static void setUp(){
-        RestAssured.baseURI = "http://localhost:80";
+    private final UserApiService userApiService = new UserApiService();
 
+    @BeforeClass
+    static void setUp() {
+        RestAssured.baseURI = "http://localhost:80";
     }
 
     @Test
@@ -29,43 +34,48 @@ public class RegisterTests {
                 .password("12345")
                 .email("demo@email.com");
 
+        /**
+         * Pojo - to get data from body and create separate class
+         */
         //expect
-        registerNewUser(userPayload)
-                .then()
-                .body("id", Matchers.not(Matchers.isEmptyString()));
+        UserRegistrationResponse pojo = userApiService.registerNewUser(userPayload)
+                .shouldHave(statusCode(200))
+                .shouldHave(bodyField("id", not(Matchers.isEmptyString())))
+                .asPojo(UserRegistrationResponse.class);
+        assertThat(pojo.getId()).isNotEmpty();
+
+        System.out.println("User id: " + pojo.getId());
+
 
     }
 
     @Test
-    public void testCanNotCreateSameUserTwice(){
+    public void testCanNotCreateSameUserTwice() {
         //given
         UserPayload userPayload = new UserPayload()
                 .username(RandomStringUtils.randomAlphabetic(6))
                 .password("12345")
                 .email("demo@email.com");
 
+        /**
+         * To get value as ID like string and Use it
+         */
         //when
-        registerNewUser(userPayload)
-                .then()
-                .body("id", Matchers.not(Matchers.isEmptyString()));
+        String id = userApiService.registerNewUser(userPayload)
+                .shouldHave(statusCode(200))
+                .shouldHave(bodyField("id", not(Matchers.isEmptyString())))
+                .getValue("id");
+        System.out.println("User id: " + id);
 
         //then
-        registerNewUser(userPayload)
-                .then().statusCode(500);
+        userApiService.registerNewUser(userPayload)
+                .shouldHave(statusCode(SC_INTERNAL_SERVER_ERROR));
+    }
+}
 
-    }
+@Getter
+class UserRegistrationResponse {
+    @JsonProperty
+    private String id;
 
-    private RequestSpecification setup(){
-        return RestAssured
-                .given()
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
-                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-    }
-    private Response registerNewUser(UserPayload userPayload){
-        return setup()
-                .body(userPayload)
-                .when()
-                .post("/register");
-    }
 }
