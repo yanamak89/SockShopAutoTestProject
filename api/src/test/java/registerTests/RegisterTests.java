@@ -9,6 +9,7 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import payload.UserPayload;
+import responces.UserRegistrationResponse;
 import service.UserApiService;
 
 import static conditions.Conditions.bodyField;
@@ -73,9 +74,3 @@ public class RegisterTests {
     }
 }
 
-@Getter
-class UserRegistrationResponse {
-    @JsonProperty
-    private String id;
-
-}

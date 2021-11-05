@@ -1,8 +1,7 @@
-package AddressTests;
+package addressTests;
 
 import baseTest.BaseTest;
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
