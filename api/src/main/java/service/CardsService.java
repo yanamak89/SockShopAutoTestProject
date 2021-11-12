@@ -1,5 +1,6 @@
 package service;
 
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -12,6 +13,7 @@ import payload.CardsPayload;
 @Slf4j
 public class CardsService extends ApiService{
 
+    @Step
     public Response addACard(CardsPayload cardsPayload) {
         return setup()
                 .body(cardsPayload)

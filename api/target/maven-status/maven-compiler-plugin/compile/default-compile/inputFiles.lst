@@ -1,0 +1,15 @@
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/config/ProjectConfig.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/service/ApiService.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/service/CardsService.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/responces/UserRegistrationResponse.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/payload/AddressesPayload.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/assertions/AssertableResponce.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/conditions/Conditions.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/payload/CardsPayload.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/service/OrdersApiService.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/payload/UserPayload.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/service/UserApiService.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/conditions/Condition.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/conditions/StatusCodeCondition.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/conditions/BodyFieldCondition.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/main/java/service/AddressesService.java

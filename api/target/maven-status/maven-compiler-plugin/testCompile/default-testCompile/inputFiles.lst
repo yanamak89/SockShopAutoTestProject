@@ -1,2 +1,5 @@
-/Users/yanamac/Desktop/programming/SockShopAutoTestProject/api/src/test/java/registerTests/UserRegistrationTest.java
-/Users/yanamac/Desktop/programming/SockShopAutoTestProject/api/src/test/java/registerTests/RegisterTests.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/test/java/baseTest/BaseTest.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/test/java/addressTests/AddressTests.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/test/java/registerTests/RegisterTests.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/test/java/ordersTest/OrdersApiTest.java
+/Users/yanamac/Desktop/programming/SockShopAutoTestProject/API/src/test/java/cardsTests/CardsTests.java

@@ -2,12 +2,15 @@ package registerTests;
 
 import baseTest.BaseTest;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import io.restassured.RestAssured;
 import lombok.Getter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Tags;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.xml.dom.Tag;
 import payload.UserPayload;
 import responces.UserRegistrationResponse;
 import service.UserApiService;
@@ -18,6 +21,7 @@ import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.Matchers.*;
 
+
 public class RegisterTests {
 
     private final UserApiService userApiService = new UserApiService();
@@ -26,6 +30,7 @@ public class RegisterTests {
     static void setUp() {
         RestAssured.baseURI = "http://localhost:80";
     }
+
 
     @Test
     public void testCanRegisterNewUserWithValidCredentials() {
@@ -71,6 +76,7 @@ public class RegisterTests {
         //then
         userApiService.registerNewUser(userPayload)
                 .shouldHave(statusCode(SC_INTERNAL_SERVER_ERROR));
+
     }
 }
 

@@ -1,0 +1,5 @@
+baseTest/BaseTest.class
+registerTests/RegisterTests.class
+ordersTest/OrdersApiTest.class
+cardsTests/CardsTests.class
+addressTests/AddressTests.class
