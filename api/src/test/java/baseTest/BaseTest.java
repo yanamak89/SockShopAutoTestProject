@@ -1,15 +1,28 @@
 package baseTest;
 
+import config.ProjectConfig;
 import io.restassured.RestAssured;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import static java.util.Collections.singletonMap;
+import static org.aeonbits.owner.ConfigFactory.getProperty;
 
 public class BaseTest {
 
-    @BeforeClass
+    private static final String ENV_VARIABLE_KEY = "env";
+
+    @BeforeAll
     static void setUp() {
-        RestAssured.baseURI = "http://localhost:80";
+        ProjectConfig config = ConfigFactory.create
+                (ProjectConfig.class, singletonMap
+                        (ENV_VARIABLE_KEY, getProperty(ENV_VARIABLE_KEY)));
+        RestAssured.baseURI = config.host();
     }
 
 }
